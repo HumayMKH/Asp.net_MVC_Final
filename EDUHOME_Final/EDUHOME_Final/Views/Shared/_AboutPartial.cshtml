@@ -1,0 +1,14 @@
+﻿@model EDUHOME_Final.Models.About
+
+<div class="col-md-6 col-sm-6">
+    <div class="about-content">
+        <h2>@Model.Title</h2>
+        <p> @Model.Content</p>
+        <a class="default-btn" href="@Url.Action("Index","Courses")">view courses</a>
+    </div>
+</div>
+<div class="col-md-6 col-sm-6">
+    <div class="about-img">
+        <img src="~/Uploads/@Model.Image" alt="about">
+    </div>
+</div>

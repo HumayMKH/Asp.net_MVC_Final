@@ -1,0 +1,148 @@
+﻿@model EDUHOME_Final.Models.Teacher
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Teacher</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Fullname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fullname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            <img src="~/Uploads/@Model.Image" alt="@Model.Image" width="100" />
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Degree)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Degree)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Experience)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Experience)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hobbies)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hobbies)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Faculty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Faculty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Skype)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Skype)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LanguagePercent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LanguagePercent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DesignPercent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DesignPercent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TeamLeaderPercent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TeamLeaderPercent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InnovationPercent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InnovationPercent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DevelopmentPercent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DevelopmentPercent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CommunicationPercent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CommunicationPercent)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Update", "Update", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

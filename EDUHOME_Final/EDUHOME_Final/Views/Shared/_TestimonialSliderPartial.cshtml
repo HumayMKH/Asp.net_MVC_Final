@@ -1,0 +1,22 @@
+﻿@model List<EDUHOME_Final.Models.TestimonialSlider>
+
+
+<div class="testimonial-owl owl-theme owl-carousel">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-8 col-md-offset-2 col-sm-12">
+            <div class="single-testimonial">
+                <div class="testimonial-info">
+                    <div class="testimonial-img">
+                        <img src="~/Uploads/@item.Image" alt="testimonial">
+                    </div>
+                    <div class="testimonial-content">
+                        <p>@item.Content </p>
+                        <h4>@item.Fullname</h4>
+                        <h5>@item.Education</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

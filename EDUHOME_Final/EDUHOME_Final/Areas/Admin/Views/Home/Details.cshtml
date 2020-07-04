@@ -1,0 +1,102 @@
+﻿@model EDUHOME_Final.Models.HomeSettings
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>HomeSettings</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.QuestionPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuestionPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SitePhone1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SitePhone1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SitePhone2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SitePhone2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Logo)
+        </dt>
+
+        <dd>
+
+            <img src="~/Uploads/@Model.Logo" alt="Alternate Text" width="100" />
+            @Html.DisplayFor(model => model.Logo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FooterLogo)
+        </dt>
+
+        <dd>
+            <img src="~/Uploads/@Model.FooterLogo" alt="Alternate Text" width="100" />
+            @Html.DisplayFor(model => model.FooterLogo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiteEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteLink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiteLink)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FooterContent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FooterContent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CopyRight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CopyRight)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

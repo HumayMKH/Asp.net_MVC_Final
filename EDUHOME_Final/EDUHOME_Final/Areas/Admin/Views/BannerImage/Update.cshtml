@@ -1,0 +1,41 @@
+﻿@model EDUHOME_Final.Models.BannerImage
+
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Update</h2>
+
+
+<form method="post" enctype="multipart/form-data">
+   
+
+    <div class="form-horizontal">
+        <h4>BannerImage</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ImageFile, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <img src="~/Uploads/@Model.Image" alt="@Model.Image" width="100" />
+                @Html.TextBoxFor(model => model.ImageFile, null, new { @class = "form-control", @type = "file" })
+                @Html.ValidationMessageFor(model => model.ImageFile, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Update" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+    </form>
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+ 

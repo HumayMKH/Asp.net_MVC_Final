@@ -1,0 +1,61 @@
+﻿@model EDUHOME_Final.ViewModels.VmSearch
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="course-title">
+                    <h3>search courses</h3>
+                </div>
+                <div class="course-form">
+                    @using (Html.BeginForm("Search", "Home", FormMethod.Post))
+                    {
+                        <input type="search" placeholder="Search..." name="searchText" />
+                        <button type="submit">search</button>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div style="text-align:center;margin-bottom:20px;font-size:30px;">
+    <img src="~/Public/img/icon/section.png" alt="section-title">
+    <h2>OUR  COURSES</h2>
+                </div>
+    @{
+
+        Html.RenderPartial(("~/Views/Shared/_CoursePartial.cshtml"), Model.Courses);
+    }
+</div>
+        <div class="row">
+            <div style="text-align:center;margin-bottom:20px;font-size:30px;">
+                <img src="~/Public/img/icon/section.png" alt="section-title">
+                <h2>UPCOMMING EVENTS</h2>
+                </div>
+                @{
+                    Html.RenderPartial(("~/Views/Shared/_EventPartial.cshtml"), Model.Events);
+                }
+
+            </div>
+            <div class="row">
+                <div style="text-align:center;margin-bottom:20px;font-size:30px;">
+                    <img src="~/Public/img/icon/section.png" alt="section-title">
+                    <h2>OUR TEACHERS</h2>
+                </div>
+                @{
+                    Html.RenderPartial("~/Views/Shared/_TeacherPartial.cshtml", Model.Teachers);
+                }
+            </div>
+            <div class="row">
+                <div style="text-align:center;margin-bottom:20px;font-size:30px;">
+                    <img src="~/Public/img/icon/section.png" alt="section-title">
+                    <h2>BLOGS</h2>
+                </div>
+                @{
+                    Html.RenderPartial(("~/Views/Shared/_BlogPartial.cshtml"), Model.Blogs);
+                }
+            </div>
+
+        </div>

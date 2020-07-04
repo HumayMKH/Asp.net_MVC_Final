@@ -1,0 +1,29 @@
+﻿@model EDUHOME_Final.Models.BannerImage
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BannerImage</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <img src="~/Uploads/@Model.Image" alt="@Model.Image" width="100" />
+
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Update", "Update", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

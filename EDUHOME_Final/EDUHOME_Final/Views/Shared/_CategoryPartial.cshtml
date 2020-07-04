@@ -1,0 +1,9 @@
+﻿@model List<EDUHOME_Final.Models.Category>
+<h3>categories</h3>
+<ul>
+    @foreach (var item in Model)
+    {
+        <li><a href="#">@item.Name (@item.Count)</a></li>
+    }
+
+</ul>

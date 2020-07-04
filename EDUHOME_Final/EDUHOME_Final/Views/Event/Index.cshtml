@@ -1,0 +1,107 @@
+﻿@model EDUHOME_Final.ViewModels.VmEvent
+@using EDUHOME_Final.ViewModels
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- Banner Area Start -->
+<div class="banner-area-wrapper">
+    <div class="banner-area text-center" style="background-image: url('/Uploads/@Model.BannerImage.Image')">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="banner-content-wrapper">
+                        <div class="banner-content">
+                            <h2>event</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Banner Area End -->
+<!-- Blog Start -->
+<div class="blog-area event-area three text-center pt-150 pb-90">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                  
+                            @{
+                                Html.RenderPartial(("~/Views/Shared/_EventPartial.cshtml"), Model.Events);
+                            }
+                    
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="blog-sidebar right text-left">
+                    <div class="single-blog-widget mb-50">
+                        <h3>search</h3>
+                        <div class="blog-search">
+                            @using (Html.BeginForm("Index", "Event", FormMethod.Post))
+                            {
+                                <input type="search" placeholder="Search..." name="searchText" />
+                                <button type="submit">
+                                    <span><i class="fa fa-search"></i></span>
+                                </button>
+                            }
+                            </div>
+                    </div>
+                    <div class="single-blog-widget mb-50">
+                        @{
+                            Html.RenderPartial("~/Views/Shared/_CategoryPartial.cshtml", Model.Categories);
+                        }
+                    </div>
+                    <div class="single-blog-widget mb-50">
+                        <div class="single-blog-banner">
+                            <a href="@Url.Action("BlogDetails","Blog"@*,new { Id=item.Id}*@)" id="blog"><img src="~/Public/img/blog/blog-img.jpg" alt="blog"></a>
+                            <h2>best<br> eductaion<br> theme</h2>
+                        </div>
+                    </div>
+                    <div class="single-blog-widget mb-50">
+                        <h3>latest post</h3>
+                        @foreach (var item in Model.Blogs.OrderBy(o => o.Id).Take(3))
+                        {
+                            <div class="single-post mb-30">
+                                <div class="single-post-img">
+                                    <a href="@Url.Action("BlogDetails","Blog",new { Id=item.Id})">
+                                        <img src="~/Uploads/@item.Image" alt="blog">
+                                        <div class="blog-hover">
+                                            <i class="fa fa-link"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="single-post-content">
+                                    <h4>
+                                        <a href="@Url.Action("BlogDetails","Blog",new { Id=item.Id})">
+                                            @(item.Title.Length>30?item.Title.Substring(0, 30): item.Title)
+                                        </a>
+                                    </h4>
+                                    <p>@item.User.Name  /  @item.CreatedDate.ToString("MMM dd,yyyy")  /  </p>
+
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="single-blog-widget">
+                        <h3>tags</h3>
+                        <div class="single-tag">
+                            <a href="@Url.Action("Index","Courses")" class="mr-10 mb-10">course</a>
+                            <a href="@Url.Action("Index","Home")" class="mr-10 mb-10">education</a>
+                            <a href="@Url.Action("Index","Teacher")" class="mb-10">teachers</a>
+                            <a href="@Url.Action("Index","Courses")" class="mr-10">learning</a>
+                            <a href="@Url.Action("Index","About")" class="mr-10">university</a>
+                            <a href="@Url.Action("Index","Event")">events</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Blog End -->
+@{
+    Html.RenderPartial("~/Views/Shared/_SubscribePartial.cshtml", new VmSubscribe { Page = "Event" });
+}
+

@@ -1,0 +1,56 @@
+﻿@model EDUHOME_Final.Models.SpeakerEvent
+
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Update</h2>
+
+
+<form method="post" enctype="multipart/form-data">
+
+    <div class="form-horizontal">
+        <h4>SpeakerEvent</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <label>Event</label>
+                <select class="form-control" name="EventId">
+                    <option value="value">Choose</option>
+                    @foreach (var item in ViewBag.Event)
+                    {
+                        <option value="@item.Id"@(Model.EventId==item.Id?"selected":"")>@item.Name</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <label>Speaker</label>
+                <select class="form-control" name="SpeakerId">
+                    <option value="value">Choose</option>
+                    @foreach (var item in ViewBag.Speaker)
+                    {
+                        <option value="@item.Id"@(Model.SpeakerId==item.Id?"selected":"")>@item.Name</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Update" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+

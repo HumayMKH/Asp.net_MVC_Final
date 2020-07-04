@@ -1,0 +1,210 @@
+﻿@using EDUHOME_Final.Models
+@using EDUHOME_Final.DAL
+@{
+    EduHomeContext db = new EduHomeContext();
+    HomeSettings home = db.HomeSettings.Include("SocialCompany").FirstOrDefault();
+}
+<!doctype html>
+<html class="no-js" lang="en">
+
+<!-- Mirrored from demo.devitems.com/eduhome/index-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 21 Jun 2020 19:37:50 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Eduhome - Educational HTML Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="~/Public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Public/css/animate.css">
+    <link rel="stylesheet" href="~/Public/css/meanmenu.css">
+    <link rel="stylesheet" href="~/Public/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/Public/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Public/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Public/css/et-line-icon.css">
+    <link rel="stylesheet" href="~/Public/css/reset.css">
+    <link rel="stylesheet" href="~/Public/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/Public/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="~/Public/css/style.css">
+    <link rel="stylesheet" href="~/Public/css/responsive.css">
+    <script src="~/Public/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body>
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Header Area Start -->
+    <header class="top">
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-sm-8 col-xs-12">
+                        <div class="header-top-left">
+                            <p>HAVE ANY QUESTION ?  @home.QuestionPhone</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="header-top-right text-right">
+                            <ul>
+                                <li><a href="@Url.Action("Login","Home")">login</a></li>
+                                <li><a href="@Url.Action("Register","Home")">signup</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-area two header-sticky">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                        <div class="logo">
+                            <a href="@Url.Action("Index","Home")"><img src="~/Uploads/@home.Logo" alt="@home.Logo" /></a>
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-sm-9 col-xs-6">
+                        <div class="content-wrapper text-right">
+                            <!-- Main Menu Start -->
+                            <div class="main-menu">
+                                <nav>
+                                    <ul>
+                                        <li>
+                                            <a href="@Url.Action("Index","Home")">Home</a>
+                                        </li>
+                                        <li><a href="@Url.Action("Index","About")">About</a></li>
+                                        <li>
+                                            <a href="@Url.Action("Index","Courses")">Courses</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Index","Event")">Event</a>
+                                        </li>
+                                        <li class="hidden-sm">
+                                            <a href="@Url.Action("Index","Teacher")">Teacher</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Index","Blog")">Blog</a>
+                                        </li>
+                                        <li><a href="@Url.Action("Index","Contact")">Contact</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <!--Search Form Start-->
+                            <div class="search-btn">
+                                <ul data-toggle="dropdown" class="header-search search-toggle">
+                                    <li class="search-menu">
+                                        <i class="fa fa-search"></i>
+                                    </li>
+                                </ul>
+                                <div class="search">
+                                    <div class="search-form">
+                                        <form action="@Url.Action("Search","Home") " id="search-form" method="post">
+                                           
+                                            <input type="search" placeholder="Search here..." name="search" />
+                                            <button type="submit">
+                                                <span><i class="fa fa-search"></i></span>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End of Search Form-->
+                            <!-- Main Menu End -->
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="mobile-menu hidden-lg hidden-md hidden-sm"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header Area End -->
+
+    @RenderBody()
+
+
+    <!-- Footer Start -->
+    <footer class="footer-area">
+        <div class="main-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="single-widget pr-60">
+                            <div class="footer-logo pb-25">
+                                <a href="@Url.Action("Index","Home")"><img src="~/Uploads/@home.FooterLogo" alt="eduhome"></a>
+                            </div>
+                             <p>@home.FooterContent</p>
+                            <div class="footer-social">
+                                <ul>
+                                    @foreach (var social in home.SocialCompany)
+                                    {
+                                        <li><a href="@social.Link"><i class=" @social.Icon "></i></a></li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="single-widget">
+                            <h3>information</h3>
+                            <ul>
+                                <li><a href="#">addmission</a></li>
+                                <li><a href="#">Academic Calender</a></li>
+                                <li><a href="@Url.Action("Index","Event")">Event List</a></li>
+                                <li><a href="#">Hostel &amp; Dinning</a></li>
+                                <li><a href="#">TimeTable</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-6 col-xs-12">
+                        <div class="single-widget">
+                            <h3>useful links</h3>
+                            <ul>
+                                <li><a href="@Url.Action("Index","Courses")">our courses</a></li>
+                                <li><a href="@Url.Action("Index","About")">about us</a></li>
+                                <li><a href="@Url.Action("Index","Teacher")">teachers &amp; faculty</a></li>
+                                <li><a href="#">teams &amp; conditions</a></li>
+                                <li><a href="@Url.Action("Index","Event")">our events</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="single-widget">
+                            <h3>get in touch</h3>
+                            <p>Your address goes here, Street<br>@home.Address</p>
+                            <p>@home.SitePhone1<br>@home.SitePhone2</p>
+                            <p>@home.SiteEmail<br>@home.SiteLink</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <p>Copyright © <a href="@Url.Action("Index","Home")" target="_blank">@home.CopyRight</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer End -->
+
+    <script src="~/Public/js/vendor/jquery-1.12.0.min.js"></script>
+    <script src="~/Public/js/bootstrap.min.js"></script>
+    <script src="~/Public/js/jquery.meanmenu.js"></script>
+    <script src="~/Public/js/jquery.magnific-popup.js"></script>
+    <script src="~/Public/js/ajax-mail.js"></script>
+    <script src="~/Public/js/owl.carousel.min.js"></script>
+    <script src="~/Public/js/jquery.mb.YTPlayer.js"></script>
+    <script src="~/Public/js/jquery.nicescroll.min.js"></script>
+    <script src="~/Public/js/plugins.js"></script>
+    <script src="~/Public/js/main.js"></script>
+</body>
+
+<!-- Mirrored from demo.devitems.com/eduhome/index-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 21 Jun 2020 19:41:25 GMT -->
+</html>
